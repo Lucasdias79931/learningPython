@@ -1,0 +1,1 @@
+Use o arquivo gerarDadosAleatorios.py para gerar os dados
