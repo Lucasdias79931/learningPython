@@ -11,3 +11,6 @@ __pycache__/
 # Ignorar outros arquivos indesejados
 *.DS_Store
 *.env
+
+# Arquivos txt que estão em crud com arquivo
+crud com arquivo/*.txt
