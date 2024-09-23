@@ -1,0 +1,13 @@
+# Ignorar a virtual environment
+venv/
+
+# Ignorar arquivos de cache
+__pycache__/
+*.py[cod]
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar outros arquivos indesejados
+*.DS_Store
+*.env
