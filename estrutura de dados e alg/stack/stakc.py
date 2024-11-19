@@ -112,13 +112,14 @@ class Stack:
         if self.base is None or self.base == self.top:
             return
 
-        aux_stack = Stack()
-        while not self.is_empty():
-            aux_stack.push(self.create_data(self.pop()))
-
-        while not aux_stack.is_empty():
-            self.push(aux_stack.pop())
-
+        current = self.base
+        previous = None
+        while current is not None:
+            next = current.next
+            current.next = previous
+            previous = current
+            current = next
+        self.base = previous
     def merge_stack(self, stack_two):
         if self.is_empty() or stack_two.is_empty():
             print("\nUma das listas ou as duas são nulas")
