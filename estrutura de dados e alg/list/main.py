@@ -4,6 +4,7 @@ class NO():
         self.next = None
         
 class Lista():
+
     def __init__(self):
        self.ini = None
        

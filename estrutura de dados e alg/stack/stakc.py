@@ -109,17 +109,19 @@ class Stack:
         return new_stack
 
     def reverse(self):
-        if self.base is None or self.base == self.top:
-            return
+        if not self.base or not self.top:
+            raise ValueError("Stack is empty")
 
         current = self.base
-        previous = None
-        while current is not None:
+        prev = None
+
+        while current:
             next = current.next
-            current.next = previous
-            previous = current
+            current.next = prev
+            prev = current
             current = next
-        self.base = previous
+
+        self.base = prev
     def merge_stack(self, stack_two):
         if self.is_empty() or stack_two.is_empty():
             print("\nUma das listas ou as duas são nulas")
