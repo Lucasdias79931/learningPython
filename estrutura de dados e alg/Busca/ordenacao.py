@@ -3,21 +3,31 @@ class Busca_ordenacao:
         pass
     
     @staticmethod
-    def qsort(arr):
-        if len(arr) < 2:
-            return arr
-        else:
-            pivo = arr[0]
-            menores = []
-            maiores = []
-            for i in range(1, len(arr)): 
-                if arr[i] <= pivo:
-                    menores.append(arr[i])
-                else:
-                    maiores.append(arr[i])
+    def qsort(arr, l, r):
+        def partition(arr, l, r):
+         
+            pivot = arr[r]
+            i = l - 1  
+
+            for j in range(l, r):
+                
+                if arr[j] < pivot:
+                    i += 1
+                    arr[i], arr[j] = arr[j], arr[i]  
+
             
-            return Busca_ordenacao.qsort(menores) + [pivo] + Busca_ordenacao.qsort(maiores)
+            arr[i + 1], arr[r] = arr[r], arr[i + 1]
+            return i + 1
+        
+        if l < r:
+            
+            pi = partition(arr, l, r)
+            
+            Busca_ordenacao.qsort(arr, l, pi - 1)
+            Busca_ordenacao.qsort(arr, pi + 1, r)
+        
     
+        
     @staticmethod
     def bsort(arr):
         for i in range(0, len(arr) -1):
@@ -30,9 +40,11 @@ class Busca_ordenacao:
 
 ## testes
 if __name__  == "__main__":
-    arr = [["lucas","ana","claudia"], ["marley", "xela","ana"], [5,2,0,-1,-4,-5],[0,3,4,5,6,7,8,8,9,0],[True,False]]
+    arr = [["lucas","ana","claudia"], ["marley", "xela","ana"], [5,2,0,-1,-4,-5],[0,3,4,5,6,7,8,8,9,0,-5,-7,-9,-8,-5,-6,-6],[True,False]]
 
-    ARR = [Busca_ordenacao.qsort(sublista) for sublista in arr]
+    for sublista in arr:
+        Busca_ordenacao.qsort(sublista, 0, len(sublista) - 1)
 
-    print(ARR)
+
+    print(arr)
 
